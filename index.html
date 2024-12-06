@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twoge Comparison - Compare two images at ease</title>
+    <meta
+      name="description"
+      content="Twoge Comparison is a tool that helps you visually compare two images using features like sliders, split view, and fade effects."
+    />
+    <meta
+      name="keywords"
+      content="image comparison, compare images online, side-by-side comparison, image difference tool, Twoge Comparison, image analysis, visual comparison tool"
+    />
+    <meta name="author" content="Rezzvy" />
+
+    <link
+      rel="stylesheet"
+      href="./lib/bootstrap-5.3.3-dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body class="bg-body-tertiary">
+    <header class="py-4 text-center text-bg-dark">
+      <div class="container-lg">
+        <h1 class="h3 fw-bold">TWOGE COMPARISON</h1>
+        <p class="lead m-0">Web-based app to compare two images</p>
+      </div>
+    </header>
+
+    <main class="my-4">
+      <!-- Image Upload Section -->
+      <section class="mb-2">
+        <div class="container-lg">
+          <h2 class="h4">Images</h2>
+          <div class="row row-cols-1 row-cols-md-2 g-2">
+            <div class="col">
+              <label for="image1" class="form-label">Image 1</label>
+              <input id="image1" type="file" class="form-control" />
+            </div>
+            <div class="col">
+              <label for="image2" class="form-label">Image 2</label>
+              <input id="image2" type="file" class="form-control" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Comparison Controls Section -->
+      <section>
+        <div class="container-lg">
+          <h2 class="h4">Comparison</h2>
+          <div class="d-flex flex-column flex-md-row mb-2">
+            <button class="btn btn-dark border-0 fw-bold flex-fill">
+              Slider
+            </button>
+            <button class="btn btn-outline-dark border-0 fw-bold flex-fill">
+              Split
+            </button>
+            <button class="btn btn-outline-dark border-0 fw-bold flex-fill">
+              Fade
+            </button>
+          </div>
+          <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-outline-dark flex-fill">Zoom Out</button>
+            <button class="btn btn-outline-dark flex-fill">Zoom In</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Canvas Section -->
+      <section class="canvas mt-2 py-2">
+        <div class="container-lg">
+          <div class="_canvas-wrapper">
+            <!-- Slider -->
+            <div class="slider">
+              <div class="input-range-replica"></div>
+              <input
+                type="range"
+                class="form-range"
+                min="0"
+                max="100"
+                step="1"
+                value="50"
+              />
+              <img
+                src="https://img.freepik.com/free-photo/sad-anime-blue-monday-illustration_23-2151910258.jpg"
+                alt="Image 1"
+              />
+              <img
+                src="https://mrwallpaper.com/images/hd/adorable-kawaii-anime-girl-enjoying-her-day-py6c3l2d6c8wfno6.jpg"
+                alt="Image 2"
+              />
+            </div>
+
+            <!-- Split -->
+            <div class="split">
+              <div class="row row-cols-1 row-cols-md-2 g-2">
+                <div class="col">
+                  <div class="img-split bg-white shadow p-2">
+                    <img
+                      src="https://img.freepik.com/free-photo/sad-anime-blue-monday-illustration_23-2151910258.jpg"
+                      alt="Split Image 1"
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="img-split bg-white shadow p-2">
+                    <img
+                      src="https://mrwallpaper.com/images/hd/adorable-kawaii-anime-girl-enjoying-her-day-py6c3l2d6c8wfno6.jpg"
+                      alt="Split Image 2"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fade -->
+            <div class="_fade">
+              <div class="fade-opacity-control bg-white border p-2 mb-2 shadow">
+                <input type="range" class="form-control" />
+              </div>
+              <div class="fade-imgs">
+                <img
+                  src="https://img.freepik.com/free-photo/sad-anime-blue-monday-illustration_23-2151910258.jpg"
+                  alt="Fade Image 1"
+                />
+                <img
+                  src="https://mrwallpaper.com/images/hd/adorable-kawaii-anime-girl-enjoying-her-day-py6c3l2d6c8wfno6.jpg"
+                  alt="Fade Image 2"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="mt-4">
+      <div class="container-lg text-center">
+        <p class="m-0">
+          Made with lots of love by
+          <a href="https://github.com/rezzvy" class="fw-bold link-dark"
+            >Muhammad Reza Fahlevi</a
+          >
+        </p>
+      </div>
+    </footer>
+
+    <script src="./lib/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
