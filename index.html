@@ -33,6 +33,11 @@
       <section class="mb-2">
         <div class="container-lg">
           <h2 class="h4">Images</h2>
+          <p class="alert alert-dark mb-2">
+            The canvas size follows Image 2, and you can control Image 1 using
+            the slider or fade comparison. If the dimensions of the two images
+            are different, Image 1 will stretch to match the size of Image 2.
+          </p>
           <div class="row row-cols-1 row-cols-md-2 g-2">
             <div class="col">
               <label for="image1" class="form-label">Image 1</label>
@@ -51,29 +56,48 @@
         <div class="container-lg">
           <h2 class="h4">Comparison</h2>
           <div class="d-flex flex-column flex-md-row mb-2">
-            <button class="btn btn-dark border-0 fw-bold flex-fill">
+            <button
+              class="btn btn-dark border-0 fw-bold flex-fill control"
+              data-comparison="slider-view"
+            >
               Slider
             </button>
-            <button class="btn btn-outline-dark border-0 fw-bold flex-fill">
+            <button
+              class="btn btn-outline-dark border-0 fw-bold flex-fill control"
+              data-comparison="split-view"
+            >
               Split
             </button>
-            <button class="btn btn-outline-dark border-0 fw-bold flex-fill">
+            <button
+              class="btn btn-outline-dark border-0 fw-bold flex-fill control"
+              data-comparison="fade-view"
+            >
               Fade
             </button>
           </div>
           <div class="d-flex flex-wrap gap-2">
-            <button class="btn btn-outline-dark flex-fill">Zoom Out</button>
-            <button class="btn btn-outline-dark flex-fill">Zoom In</button>
+            <button
+              class="btn btn-outline-dark flex-fill control"
+              id="zoom-out-btn"
+            >
+              Zoom Out
+            </button>
+            <button
+              class="btn btn-outline-dark flex-fill control"
+              id="zoom-in-btn"
+            >
+              Zoom In
+            </button>
           </div>
         </div>
       </section>
 
       <!-- Canvas Section -->
-      <section class="canvas mt-2 py-2">
+      <section class="canvas mt-2 py-2 not-ready">
         <div class="container-lg">
           <div class="_canvas-wrapper">
             <!-- Slider -->
-            <div class="slider">
+            <div class="slider zoomable">
               <div class="input-range-replica"></div>
               <input
                 type="range"
@@ -83,14 +107,8 @@
                 step="1"
                 value="50"
               />
-              <img
-                src="https://img.freepik.com/free-photo/sad-anime-blue-monday-illustration_23-2151910258.jpg"
-                alt="Image 1"
-              />
-              <img
-                src="https://mrwallpaper.com/images/hd/adorable-kawaii-anime-girl-enjoying-her-day-py6c3l2d6c8wfno6.jpg"
-                alt="Image 2"
-              />
+              <img class="image1" src="#" alt="Image 1" />
+              <img class="image2" src="#" alt="Image 2" />
             </div>
 
             <!-- Split -->
@@ -98,18 +116,12 @@
               <div class="row row-cols-1 row-cols-md-2 g-2">
                 <div class="col">
                   <div class="img-split bg-white shadow p-2">
-                    <img
-                      src="https://img.freepik.com/free-photo/sad-anime-blue-monday-illustration_23-2151910258.jpg"
-                      alt="Split Image 1"
-                    />
+                    <img class="image1 zoomable" src="#" alt="Split Image 1" />
                   </div>
                 </div>
                 <div class="col">
                   <div class="img-split bg-white shadow p-2">
-                    <img
-                      src="https://mrwallpaper.com/images/hd/adorable-kawaii-anime-girl-enjoying-her-day-py6c3l2d6c8wfno6.jpg"
-                      alt="Split Image 2"
-                    />
+                    <img class="image2 zoomable" src="#" alt="Split Image 2" />
                   </div>
                 </div>
               </div>
@@ -118,17 +130,18 @@
             <!-- Fade -->
             <div class="_fade">
               <div class="fade-opacity-control bg-white border p-2 mb-2 shadow">
-                <input type="range" class="form-control" />
+                <input
+                  type="range"
+                  class="form-control"
+                  max="1"
+                  min="0"
+                  step="0.1"
+                  value="0.5"
+                />
               </div>
-              <div class="fade-imgs">
-                <img
-                  src="https://img.freepik.com/free-photo/sad-anime-blue-monday-illustration_23-2151910258.jpg"
-                  alt="Fade Image 1"
-                />
-                <img
-                  src="https://mrwallpaper.com/images/hd/adorable-kawaii-anime-girl-enjoying-her-day-py6c3l2d6c8wfno6.jpg"
-                  alt="Fade Image 2"
-                />
+              <div class="fade-imgs zoomable">
+                <img class="image1" src="#" alt="Fade Image 1" />
+                <img class="image2" src="#" alt="Fade Image 2" />
               </div>
             </div>
           </div>
@@ -148,5 +161,6 @@
     </footer>
 
     <script src="./lib/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
+    <script src="./src/main.js"></script>
   </body>
 </html>
