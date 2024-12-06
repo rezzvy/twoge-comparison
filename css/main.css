@@ -148,3 +148,9 @@ select,
   opacity: 0.5;
   pointer-events: none;
 }
+
+.zoomable {
+  touch-action: none;
+  will-change: transform;
+  transform: translate(var(--x, 0), var(--y, 0)) scale(var(--zoom-level, 1));
+}

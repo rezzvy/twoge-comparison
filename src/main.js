@@ -48,7 +48,7 @@ function checkInput() {
 
 function zoom(level) {
   zoomableElements.forEach((el) => {
-    el.style.transform = `scale(${level})`;
+    el.style.setProperty("--zoom-level", level);
   });
 }
 
@@ -97,6 +97,14 @@ comparisonButtons.forEach((btn) => {
     );
 
     renderComparison = e.currentTarget.dataset.comparison;
+
+    zoomableElements.forEach((element) => {
+      element.style.setProperty("--x", "0");
+      element.style.setProperty("--y", "0");
+      element.style.setProperty("--zoom-level", "1");
+    });
+
+    val = 1;
   });
 });
 
@@ -123,3 +131,52 @@ imageTwoInputElement.addEventListener("change", (e) => {
 });
 
 enableControls(false);
+
+let isDragging = false;
+let startX, startY;
+let currentX = 0,
+  currentY = 0;
+
+const isTouchDevice = "ontouchstart" in window;
+const startEvent = isTouchDevice ? "touchstart" : "mousedown";
+const moveEvent = isTouchDevice ? "touchmove" : "mousemove";
+const endEvent = isTouchDevice ? "touchend" : "mouseup";
+
+zoomableElements.forEach((element) => {
+  element.addEventListener("dragstart", (e) => e.preventDefault());
+
+  element.addEventListener(startEvent, (e) => {
+    if (e.target.tagName === "INPUT") return;
+
+    isDragging = true;
+    startX = isTouchDevice ? e.touches[0].clientX : e.clientX;
+    startY = isTouchDevice ? e.touches[0].clientY : e.clientY;
+    element.style.cursor = "grabbing";
+
+    e.preventDefault();
+  });
+
+  document.addEventListener(moveEvent, (e) => {
+    if (isDragging) {
+      e.preventDefault();
+      const deltaX =
+        (isTouchDevice ? e.touches[0].clientX : e.clientX) - startX;
+      const deltaY =
+        (isTouchDevice ? e.touches[0].clientY : e.clientY) - startY;
+
+      currentX += deltaX;
+      currentY += deltaY;
+
+      element.style.setProperty("--x", currentX + "px");
+      element.style.setProperty("--y", currentY + "px");
+
+      startX = isTouchDevice ? e.touches[0].clientX : e.clientX;
+      startY = isTouchDevice ? e.touches[0].clientY : e.clientY;
+    }
+  });
+
+  document.addEventListener(endEvent, () => {
+    isDragging = false;
+    element.style.cursor = "grab";
+  });
+});
