@@ -109,6 +109,8 @@ comparisonButtons.forEach((btn) => {
 });
 
 imageOneInputElement.addEventListener("change", (e) => {
+  if (!e.target.files.length) return;
+
   const file = e.target.files[0];
   imageOneElements.forEach((img) => {
     img.src = URL.createObjectURL(file);
@@ -120,8 +122,13 @@ imageOneInputElement.addEventListener("change", (e) => {
 });
 
 imageTwoInputElement.addEventListener("change", (e) => {
+  if (!e.target.files.length) return;
+
   const file = e.target.files[0];
   imageTwoElements.forEach((img) => {
+    if (img.src) {
+      URL.revokeObjectURL(img.src);
+    }
     img.src = URL.createObjectURL(file);
   });
 

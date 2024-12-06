@@ -7,7 +7,7 @@ select,
 
 /* Canvas Background */
 .canvas {
-  overflow: auto;
+  overflow: hidden;
   background: linear-gradient(
       45deg,
       transparent 49%,
@@ -36,7 +36,7 @@ select,
 }
 
 .canvas.not-ready {
-  min-height: 400px;
+  min-height: 600px;
   position: relative;
   align-content: center;
 }
@@ -141,7 +141,7 @@ select,
 }
 
 .canvas .split .img-split {
-  overflow: auto;
+  overflow: hidden;
 }
 
 .disable-event {
@@ -153,4 +153,10 @@ select,
   touch-action: none;
   will-change: transform;
   transform: translate(var(--x, 0), var(--y, 0)) scale(var(--zoom-level, 1));
+}
+
+@media (max-width: 768px) {
+  .canvas.not-ready {
+    min-height: 300px;
+  }
 }
