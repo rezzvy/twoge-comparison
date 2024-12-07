@@ -28,6 +28,8 @@ const imageTwoElements = document.querySelectorAll(".image2");
 
 const controls = document.querySelectorAll(".control");
 
+const resetViewButton = document.getElementById("reset-view-btn");
+
 let renderComparison = "slider-view";
 let inputtedImages = 0;
 
@@ -105,6 +107,10 @@ comparisonButtons.forEach((btn) => {
     });
 
     val = 1;
+    startX = 0;
+    startY = 0;
+    currentX = 0;
+    currentY = 0;
   });
 });
 
@@ -186,4 +192,18 @@ zoomableElements.forEach((element) => {
     isDragging = false;
     element.style.cursor = "grab";
   });
+});
+
+resetViewButton.addEventListener("click", (e) => {
+  zoomableElements.forEach((element) => {
+    element.style.setProperty("--x", "0");
+    element.style.setProperty("--y", "0");
+    element.style.setProperty("--zoom-level", "1");
+  });
+
+  val = 1;
+  startX = 0;
+  startY = 0;
+  currentX = 0;
+  currentY = 0;
 });

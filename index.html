@@ -34,9 +34,9 @@
         <div class="container-lg">
           <h2 class="h4">Images</h2>
           <p class="alert alert-dark mb-2">
-            The canvas size follows Image 2, and you can control Image 1 using
-            the slider or fade comparison. If the dimensions of the two images
-            are different, Image 1 will stretch to match the size of Image 2.
+            The canvas is the same size as Image 2. Use the slider or fade
+            comparison to adjust Image 1. If the images are different sizes,
+            Image 1 will stretch to fit Image 2.
           </p>
           <div class="row row-cols-1 row-cols-md-2 g-2">
             <div class="col">
@@ -85,18 +85,24 @@
               Fade
             </button>
           </div>
-          <div class="d-flex flex-wrap gap-2">
+          <div class="d-flex justify-content-md-center flex-wrap gap-2">
             <button
-              class="btn btn-outline-dark flex-fill control"
+              class="btn btn-outline-dark flex-grow-1 flex-md-grow-0 control"
               id="zoom-out-btn"
             >
               Zoom Out
             </button>
             <button
-              class="btn btn-outline-dark flex-fill control"
+              class="btn btn-outline-dark flex-grow-1 flex-md-grow-0 control"
               id="zoom-in-btn"
             >
               Zoom In
+            </button>
+            <button
+              class="btn btn-outline-dark flex-grow-1 flex-md-grow-0 control"
+              id="reset-view-btn"
+            >
+              Reset View
             </button>
           </div>
         </div>
